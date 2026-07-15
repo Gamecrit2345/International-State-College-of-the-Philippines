@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ISCP Bulacan - Online Registration</title>
+  <title>INTERNATIONAL STATE COLLEGE OF THE PHILIPPINES - Online Registration</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
-    
+   
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Poppins', sans-serif;
@@ -18,7 +18,6 @@
       justify-content: center;
       padding: 20px;
     }
-
     .container {
       background: rgba(255,255,255,0.1);
       backdrop-filter: blur(12px);
@@ -29,17 +28,19 @@
       max-width: 560px;
       box-shadow: 0 15px 35px rgba(0,0,0,0.4);
     }
-
-    h1 { font-size: 2.4em; text-align: center; margin-bottom: 5px; }
+    h1 { 
+      font-size: 2.1em; 
+      text-align: center; 
+      margin-bottom: 5px; 
+      line-height: 1.2;
+    }
     h2 { text-align: center; color: #a0d8ff; margin-bottom: 30px; font-weight: 500; }
-
     label { display: block; margin-top: 15px; margin-bottom: 5px; font-weight: 500; color: #a0d8ff; }
     input, select {
       width: 100%; padding: 14px 16px; margin: 8px 0 16px 0;
       border: none; border-radius: 10px; font-size: 1.05em;
       background: rgba(255,255,255,0.92); color: #001f3f;
     }
-
     button {
       width: 100%; padding: 16px; margin-top: 25px;
       background: white; color: #001f3f; border: none;
@@ -47,12 +48,10 @@
       cursor: pointer;
     }
     button:hover { background: #00ccff; }
-
     .footer { margin-top: 40px; text-align: center; font-size: 0.85em; color: #a0d8ff; line-height: 1.6; }
   </style>
 </head>
 <body>
-
   <!-- Loading Screen -->
   <div id="loading" style="position:fixed;top:0;left:0;width:100%;height:100%;background:#001f3f;display:flex;align-items:center;justify-content:center;z-index:9999;">
     <div style="text-align:center;">
@@ -60,29 +59,22 @@
       <p style="margin-top:20px;">Loading ISCP System...</p>
     </div>
   </div>
-
   <div class="container" id="mainContent" style="display:none;">
-    <h1 id="title">ISCP BULACAN</h1>
+    <h1 id="title">INTERNATIONAL STATE COLLEGE OF THE PHILIPPINES</h1>
     <h2 id="subtitle">ONLINE REGISTRATION</h2>
-
     <div style="margin:25px 0;">
       <button onclick="setLanguage('en')" style="padding:10px 20px;margin:0 8px;">🇬🇧 English</button>
       <button onclick="setLanguage('tl')" style="padding:10px 20px;margin:0 8px;">🇵🇭 Tagalog</button>
     </div>
-
     <form id="regForm">
       <label id="label-fname">First Name</label>
       <input type="text" id="fname" placeholder="Juan" required>
-
       <label id="label-mname">Middle Name (Optional)</label>
       <input type="text" id="mname" placeholder="Santos">
-
       <label id="label-lname">Surname / Last Name</label>
       <input type="text" id="lname" placeholder="Dela Cruz" required>
-
       <label id="label-email">Email Address</label>
       <input type="email" id="email" placeholder="example@gmail.com or @yahoo.com" required>
-
       <label id="label-campus">Preferred Campus</label>
       <select id="campus" required>
         <option value="">-- Select Campus --</option>
@@ -116,7 +108,6 @@
         <option value="Upside Down Campus">Upside Down Campus</option>
         <option value="Virtual Reality Campus">Virtual Reality Campus</option>
       </select>
-
       <label id="label-course">Course / Program</label>
       <select id="course" required>
         <option value="">-- Select Course --</option>
@@ -147,23 +138,18 @@
         <option value="BS Time Travel Engineering">BS Time Travel Engineering</option>
         <option value="BS Intergalactic Relations">BS Intergalactic Relations</option>
       </select>
-
       <label id="label-phone">Phone Number</label>
       <input type="tel" id="phone" placeholder="09XXXXXXXXX" required>
-
       <label id="label-school">Last School Attended</label>
       <input type="text" id="school" placeholder="e.g. Bulacan National High School" required>
-
       <button type="submit" id="submitBtn">Submit Registration</button>
     </form>
-
     <div class="footer">
       This is only satire. This website is for entertainment purposes only.<br>
       Created by Denton Sagmayao<br>
       ISCPHILIPPINES.com
     </div>
   </div>
-
   <script>
     window.onload = () => {
       setTimeout(() => {
@@ -171,10 +157,9 @@
         document.getElementById('mainContent').style.display = 'block';
       }, 1600);
     };
-
     function setLanguage(lang) {
       if (lang === 'en') {
-        document.getElementById('title').innerText = "ISCP BULACAN";
+        document.getElementById('title').innerText = "INTERNATIONAL STATE COLLEGE OF THE PHILIPPINES";
         document.getElementById('subtitle').innerText = "ONLINE REGISTRATION";
         document.getElementById('label-fname').innerText = "First Name";
         document.getElementById('label-mname').innerText = "Middle Name (Optional)";
@@ -186,7 +171,7 @@
         document.getElementById('label-school').innerText = "Last School Attended";
         document.getElementById('submitBtn').innerText = "Submit Registration";
       } else {
-        document.getElementById('title').innerText = "ISCP BULACAN";
+        document.getElementById('title').innerText = "INTERNATIONAL STATE COLLEGE OF THE PHILIPPINES";
         document.getElementById('subtitle').innerText = "ONLINE REGISTRATION";
         document.getElementById('label-fname').innerText = "First Name";
         document.getElementById('label-mname').innerText = "Middle Name (Kung mayroon)";
@@ -199,15 +184,13 @@
         document.getElementById('submitBtn').innerText = "Isumite ang Registration";
       }
     }
-
     document.getElementById('regForm').addEventListener('submit', function(e) {
       e.preventDefault();
       const btn = this.querySelector('button');
       btn.innerHTML = "Processing...";
       btn.disabled = true;
-
       setTimeout(() => {
-        alert("✅ Registration Successful!\n\nThank you for applying to ISCP Bulacan Campus!\n\n(Fake site only)");
+        alert("✅ Registration Successful!\n\nThank you for applying to INTERNATIONAL STATE COLLEGE OF THE PHILIPPINES!\n\n(Fake site only)");
         this.reset();
         btn.innerHTML = "Submit Registration";
         btn.disabled = false;
