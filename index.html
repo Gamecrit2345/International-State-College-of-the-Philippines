@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ISCP Bulacan Registration</title>
+  <title>ISCP Bulacan - Online Registration</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
     
@@ -24,89 +24,101 @@
       backdrop-filter: blur(12px);
       border-radius: 20px;
       border: 2px solid rgba(255,255,255,0.3);
-      padding: 40px 25px;
+      padding: 40px 30px;
       width: 100%;
-      max-width: 580px;
+      max-width: 560px;
       box-shadow: 0 15px 35px rgba(0,0,0,0.4);
-      text-align: center;
     }
 
-    h1 { font-size: 2.3em; margin-bottom: 8px; }
-    h2 { color: #a0d8ff; margin-bottom: 30px; font-weight: 500; }
+    h1 { font-size: 2.4em; text-align: center; margin-bottom: 5px; }
+    h2 { text-align: center; color: #a0d8ff; margin-bottom: 35px; font-weight: 500; }
 
-    label { display: block; margin: 15px 0 5px; font-weight: 500; color: #a0d8ff; text-align: left; }
+    label {
+      display: block;
+      margin-top: 15px;
+      margin-bottom: 5px;
+      font-weight: 500;
+      color: #a0d8ff;
+    }
+
     input, select {
-      width: 100%; padding: 14px 16px; margin-bottom: 15px;
-      border: none; border-radius: 10px; font-size: 1.05em;
-      background: rgba(255,255,255,0.92); color: #001f3f;
+      width: 100%;
+      padding: 14px 16px;
+      margin: 8px 0 16px 0;
+      border: none;
+      border-radius: 10px;
+      font-size: 1.05em;
+      background: rgba(255,255,255,0.92);
+      color: #001f3f;
     }
 
     button {
-      width: 100%; padding: 16px; margin-top: 20px;
-      background: white; color: #001f3f; border: none;
-      border-radius: 10px; font-size: 1.2em; font-weight: 600;
+      width: 100%;
+      padding: 16px;
+      margin-top: 25px;
+      background: white;
+      color: #001f3f;
+      border: none;
+      border-radius: 10px;
+      font-size: 1.2em;
+      font-weight: 600;
       cursor: pointer;
     }
-    button:hover { background: #00ccff; }
+    button:hover { background: #00ccff; transform: scale(1.03); }
 
     .footer {
-      margin-top: 35px;
+      margin-top: 40px;
+      text-align: center;
       font-size: 0.85em;
       color: #a0d8ff;
-      line-height: 1.5;
-    }
-
-    #langSelect {
-      margin: 30px 0;
+      line-height: 1.6;
     }
   </style>
 </head>
 <body>
 
-  <!-- Loading Screen -->
-  <div id="loading" style="position:fixed; top:0; left:0; width:100%; height:100%; background:#001f3f; display:flex; align-items:center; justify-content:center; z-index:9999;">
-    <div style="text-align:center;">
-      <div style="width:60px; height:60px; border:6px solid #ffffff33; border-top:6px solid white; border-radius:50%; animation:spin 1s linear infinite; margin:auto;"></div>
-      <p style="margin-top:20px;">Loading ISCP System...</p>
-    </div>
-  </div>
-
-  <div class="container" id="mainContent" style="display:none;">
-    <h1 id="title">ISCP BULACAN</h1>
-    <h2 id="subtitle">ONLINE REGISTRATION 2026</h2>
-
-    <div id="langSelect">
-      <button onclick="setLanguage('en')" style="width:auto; padding:10px 25px; margin:0 10px;">English</button>
-      <button onclick="setLanguage('tl')" style="width:auto; padding:10px 25px; margin:0 10px;">Tagalog</button>
-    </div>
+  <div class="container">
+    <h1>ISCP BULACAN</h1>
+    <h2>ONLINE REGISTRATION</h2>
 
     <form id="regForm">
-      <label id="label-name">Full Name</label>
+      <label>Full Name</label>
       <input type="text" id="name" placeholder="Juan Dela Cruz" required>
 
-      <label id="label-email">Email Address</label>
+      <label>Email Address</label>
       <input type="email" id="email" placeholder="example@gmail.com or @yahoo.com" required>
 
-      <label id="label-campus">Preferred Campus</label>
+      <label>Preferred Campus</label>
       <select id="campus" required>
-        <!-- Same campuses as before -->
         <option value="">-- Select Campus --</option>
         <option value="Bulacan Campus">Bulacan Campus</option>
         <option value="Bataan Campus">Bataan Campus</option>
         <option value="Pampanga Campus">Pampanga Campus</option>
+        <option value="Main Campus">Main Campus</option>
         <option value="Moon Campus">Moon Campus</option>
-        <!-- ... add the rest if you want -->
+        <option value="Mars Outpost Campus">Mars Outpost Campus</option>
+        <option value="Low Earth Orbit Campus">Low Earth Orbit Campus</option>
       </select>
 
-      <label id="label-course">Course/Program</label>
+      <label>Course / Program</label>
       <select id="course" required>
         <option value="">-- Select Course --</option>
         <option value="BS Computer Science">BS Computer Science</option>
         <option value="BS Nursing">BS Nursing</option>
-        <!-- Add more -->
+        <option value="BS Education">BS Education</option>
+        <option value="BS Business Administration">BS Business Administration</option>
+        <option value="BS Criminology">BS Criminology</option>
+        <option value="BS Agriculture">BS Agriculture</option>
+        <option value="BS Civil Engineering">BS Civil Engineering</option>
       </select>
 
-      <button type="submit" id="submitBtn">Submit Registration</button>
+      <label>Phone Number</label>
+      <input type="tel" id="phone" placeholder="09XXXXXXXXX" required>
+
+      <label>Last School Attended</label>
+      <input type="text" id="school" placeholder="e.g. Bulacan National High School" required>
+
+      <button type="submit">Submit Registration</button>
     </form>
 
     <div class="footer">
@@ -117,40 +129,18 @@
   </div>
 
   <script>
-    // Loading
-    window.onload = () => {
-      setTimeout(() => {
-        document.getElementById('loading').style.display = 'none';
-        document.getElementById('mainContent').style.display = 'block';
-      }, 1800);
-    };
-
-    // Language Function
-    function setLanguage(lang) {
-      if (lang === 'en') {
-        document.getElementById('title').innerText = "ISCP BULACAN";
-        document.getElementById('subtitle').innerText = "ONLINE REGISTRATION 2026";
-        document.getElementById('label-name').innerText = "Full Name";
-        document.getElementById('label-email').innerText = "Email Address";
-        document.getElementById('label-campus').innerText = "Preferred Campus";
-        document.getElementById('label-course').innerText = "Course/Program";
-        document.getElementById('submitBtn').innerText = "Submit Registration";
-      } else {
-        document.getElementById('title').innerText = "ISCP BULACAN";
-        document.getElementById('subtitle').innerText = "ONLINE REGISTRATION 2026";
-        document.getElementById('label-name').innerText = "Buong Pangalan";
-        document.getElementById('label-email').innerText = "Email Address";
-        document.getElementById('label-campus').innerText = "Preferred Campus";
-        document.getElementById('label-course').innerText = "Kurso/Programa";
-        document.getElementById('submitBtn').innerText = "Isumite ang Registration";
-      }
-    }
-
-    // Form Submit
     document.getElementById('regForm').addEventListener('submit', function(e) {
       e.preventDefault();
-      alert("✅ Registration Successful!\n\nThank you for applying to ISCP Bulacan!\n\n(Fake site only)");
-      this.reset();
+      const btn = this.querySelector('button');
+      btn.innerHTML = "Processing...";
+      btn.disabled = true;
+
+      setTimeout(() => {
+        alert("✅ Registration Successful!\n\nThank you for applying to ISCP Bulacan Campus!\n\n(This is only a fake/satire website)");
+        this.reset();
+        btn.innerHTML = "Submit Registration";
+        btn.disabled = false;
+      }, 2000);
     });
   </script>
 </body>
