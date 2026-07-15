@@ -71,8 +71,14 @@
     </div>
 
     <form id="regForm">
-      <label id="label-name">Full Name</label>
-      <input type="text" id="name" placeholder="Juan Dela Cruz" required>
+      <label id="label-fname">First Name</label>
+      <input type="text" id="fname" placeholder="Juan" required>
+
+      <label id="label-mname">Middle Name (Optional)</label>
+      <input type="text" id="mname" placeholder="Santos">
+
+      <label id="label-lname">Surname / Last Name</label>
+      <input type="text" id="lname" placeholder="Dela Cruz" required>
 
       <label id="label-email">Email Address</label>
       <input type="email" id="email" placeholder="example@gmail.com or @yahoo.com" required>
@@ -80,20 +86,66 @@
       <label id="label-campus">Preferred Campus</label>
       <select id="campus" required>
         <option value="">-- Select Campus --</option>
-        <option value="Bulacan Campus">Bulacan Campus</option>
+        <option value="Area 51 Extension">Area 51 Extension</option>
+        <option value="Atlantis Extension">Atlantis Extension</option>
+        <option value="Baguio Cold Storage Campus">Baguio Cold Storage Campus</option>
         <option value="Bataan Campus">Bataan Campus</option>
-        <option value="Pampanga Campus">Pampanga Campus</option>
+        <option value="Bermuda Triangle Campus">Bermuda Triangle Campus</option>
+        <option value="Black Hole Campus">Black Hole Campus</option>
+        <option value="Bulacan Campus">Bulacan Campus</option>
+        <option value="Center of the Earth Campus">Center of the Earth Campus</option>
+        <option value="Chernobyl Extension">Chernobyl Extension</option>
+        <option value="Cloud 9 Campus">Cloud 9 Campus</option>
+        <option value="Deep Ocean Campus">Deep Ocean Campus</option>
+        <option value="DJ Loonyo Int'l Airport Extension">DJ Loonyo Int'l Airport Extension</option>
+        <option value="Encantadia Extension">Encantadia Extension</option>
+        <option value="Fourth Wall Campus">Fourth Wall Campus</option>
+        <option value="Gaslight Campus">Gaslight Campus</option>
+        <option value="Jupiter Campus">Jupiter Campus</option>
+        <option value="Low Earth Orbit Campus">Low Earth Orbit Campus</option>
         <option value="Main Campus">Main Campus</option>
+        <option value="Marilao–Bulacan Satellite Campus">Marilao–Bulacan Satellite Campus</option>
+        <option value="Mars Outpost Campus">Mars Outpost Campus</option>
+        <option value="Mirror Dimension Campus">Mirror Dimension Campus</option>
         <option value="Moon Campus">Moon Campus</option>
+        <option value="Pampanga Campus">Pampanga Campus</option>
+        <option value="Parallel Universe Campus">Parallel Universe Campus</option>
+        <option value="Sun Campus">Sun Campus</option>
+        <option value="Time Travel Campus">Time Travel Campus</option>
+        <option value="Underwater Campus">Underwater Campus</option>
+        <option value="Upside Down Campus">Upside Down Campus</option>
+        <option value="Virtual Reality Campus">Virtual Reality Campus</option>
       </select>
 
       <label id="label-course">Course / Program</label>
       <select id="course" required>
         <option value="">-- Select Course --</option>
-        <option value="BS Computer Science">BS Computer Science</option>
-        <option value="BS Nursing">BS Nursing</option>
-        <option value="BS Education">BS Education</option>
+        <option value="BS Accountancy">BS Accountancy</option>
+        <option value="BS Agriculture">BS Agriculture</option>
+        <option value="BS Architecture">BS Architecture</option>
+        <option value="BS Aviation">BS Aviation</option>
+        <option value="BS Biology">BS Biology</option>
         <option value="BS Business Administration">BS Business Administration</option>
+        <option value="BS Chemical Engineering">BS Chemical Engineering</option>
+        <option value="BS Civil Engineering">BS Civil Engineering</option>
+        <option value="BS Computer Science">BS Computer Science</option>
+        <option value="BS Criminology">BS Criminology</option>
+        <option value="BS Education">BS Education</option>
+        <option value="BS Electrical Engineering">BS Electrical Engineering</option>
+        <option value="BS Environmental Science">BS Environmental Science</option>
+        <option value="BS Information Technology">BS Information Technology</option>
+        <option value="BS Law">BS Law</option>
+        <option value="BS Marine Biology">BS Marine Biology</option>
+        <option value="BS Mechanical Engineering">BS Mechanical Engineering</option>
+        <option value="BS Medicine">BS Medicine</option>
+        <option value="BS Memes & Internet Studies">BS Memes & Internet Studies</option>
+        <option value="BS Nursing">BS Nursing</option>
+        <option value="BS Pharmacy">BS Pharmacy</option>
+        <option value="BS Psychology">BS Psychology</option>
+        <option value="BS Quantum Physics">BS Quantum Physics</option>
+        <option value="BS Tourism">BS Tourism</option>
+        <option value="BS Time Travel Engineering">BS Time Travel Engineering</option>
+        <option value="BS Intergalactic Relations">BS Intergalactic Relations</option>
       </select>
 
       <label id="label-phone">Phone Number</label>
@@ -113,7 +165,6 @@
   </div>
 
   <script>
-    // Loading Screen
     window.onload = () => {
       setTimeout(() => {
         document.getElementById('loading').style.display = 'none';
@@ -121,12 +172,13 @@
       }, 1600);
     };
 
-    // Language Switch
     function setLanguage(lang) {
       if (lang === 'en') {
         document.getElementById('title').innerText = "ISCP BULACAN";
         document.getElementById('subtitle').innerText = "ONLINE REGISTRATION";
-        document.getElementById('label-name').innerText = "Full Name";
+        document.getElementById('label-fname').innerText = "First Name";
+        document.getElementById('label-mname').innerText = "Middle Name (Optional)";
+        document.getElementById('label-lname').innerText = "Surname / Last Name";
         document.getElementById('label-email').innerText = "Email Address";
         document.getElementById('label-campus').innerText = "Preferred Campus";
         document.getElementById('label-course').innerText = "Course / Program";
@@ -136,7 +188,9 @@
       } else {
         document.getElementById('title').innerText = "ISCP BULACAN";
         document.getElementById('subtitle').innerText = "ONLINE REGISTRATION";
-        document.getElementById('label-name').innerText = "Buong Pangalan";
+        document.getElementById('label-fname').innerText = "First Name";
+        document.getElementById('label-mname').innerText = "Middle Name (Kung mayroon)";
+        document.getElementById('label-lname').innerText = "Apelyido";
         document.getElementById('label-email').innerText = "Email Address";
         document.getElementById('label-campus').innerText = "Preferred Campus";
         document.getElementById('label-course').innerText = "Kurso / Programa";
@@ -146,7 +200,6 @@
       }
     }
 
-    // Form Submit
     document.getElementById('regForm').addEventListener('submit', function(e) {
       e.preventDefault();
       const btn = this.querySelector('button');
