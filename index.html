@@ -31,64 +31,53 @@
     }
 
     h1 { font-size: 2.4em; text-align: center; margin-bottom: 5px; }
-    h2 { text-align: center; color: #a0d8ff; margin-bottom: 35px; font-weight: 500; }
+    h2 { text-align: center; color: #a0d8ff; margin-bottom: 30px; font-weight: 500; }
 
-    label {
-      display: block;
-      margin-top: 15px;
-      margin-bottom: 5px;
-      font-weight: 500;
-      color: #a0d8ff;
-    }
-
+    label { display: block; margin-top: 15px; margin-bottom: 5px; font-weight: 500; color: #a0d8ff; }
     input, select {
-      width: 100%;
-      padding: 14px 16px;
-      margin: 8px 0 16px 0;
-      border: none;
-      border-radius: 10px;
-      font-size: 1.05em;
-      background: rgba(255,255,255,0.92);
-      color: #001f3f;
+      width: 100%; padding: 14px 16px; margin: 8px 0 16px 0;
+      border: none; border-radius: 10px; font-size: 1.05em;
+      background: rgba(255,255,255,0.92); color: #001f3f;
     }
 
     button {
-      width: 100%;
-      padding: 16px;
-      margin-top: 25px;
-      background: white;
-      color: #001f3f;
-      border: none;
-      border-radius: 10px;
-      font-size: 1.2em;
-      font-weight: 600;
+      width: 100%; padding: 16px; margin-top: 25px;
+      background: white; color: #001f3f; border: none;
+      border-radius: 10px; font-size: 1.2em; font-weight: 600;
       cursor: pointer;
     }
-    button:hover { background: #00ccff; transform: scale(1.03); }
+    button:hover { background: #00ccff; }
 
-    .footer {
-      margin-top: 40px;
-      text-align: center;
-      font-size: 0.85em;
-      color: #a0d8ff;
-      line-height: 1.6;
-    }
+    .footer { margin-top: 40px; text-align: center; font-size: 0.85em; color: #a0d8ff; line-height: 1.6; }
   </style>
 </head>
 <body>
 
-  <div class="container">
-    <h1>ISCP BULACAN</h1>
-    <h2>ONLINE REGISTRATION</h2>
+  <!-- Loading Screen -->
+  <div id="loading" style="position:fixed;top:0;left:0;width:100%;height:100%;background:#001f3f;display:flex;align-items:center;justify-content:center;z-index:9999;">
+    <div style="text-align:center;">
+      <div style="width:60px;height:60px;border:6px solid #ffffff33;border-top:6px solid white;border-radius:50%;animation:spin 1s linear infinite;margin:auto;"></div>
+      <p style="margin-top:20px;">Loading ISCP System...</p>
+    </div>
+  </div>
+
+  <div class="container" id="mainContent" style="display:none;">
+    <h1 id="title">ISCP BULACAN</h1>
+    <h2 id="subtitle">ONLINE REGISTRATION</h2>
+
+    <div style="margin:25px 0;">
+      <button onclick="setLanguage('en')" style="padding:10px 20px;margin:0 8px;">🇬🇧 English</button>
+      <button onclick="setLanguage('tl')" style="padding:10px 20px;margin:0 8px;">🇵🇭 Tagalog</button>
+    </div>
 
     <form id="regForm">
-      <label>Full Name</label>
+      <label id="label-name">Full Name</label>
       <input type="text" id="name" placeholder="Juan Dela Cruz" required>
 
-      <label>Email Address</label>
+      <label id="label-email">Email Address</label>
       <input type="email" id="email" placeholder="example@gmail.com or @yahoo.com" required>
 
-      <label>Preferred Campus</label>
+      <label id="label-campus">Preferred Campus</label>
       <select id="campus" required>
         <option value="">-- Select Campus --</option>
         <option value="Bulacan Campus">Bulacan Campus</option>
@@ -96,29 +85,24 @@
         <option value="Pampanga Campus">Pampanga Campus</option>
         <option value="Main Campus">Main Campus</option>
         <option value="Moon Campus">Moon Campus</option>
-        <option value="Mars Outpost Campus">Mars Outpost Campus</option>
-        <option value="Low Earth Orbit Campus">Low Earth Orbit Campus</option>
       </select>
 
-      <label>Course / Program</label>
+      <label id="label-course">Course / Program</label>
       <select id="course" required>
         <option value="">-- Select Course --</option>
         <option value="BS Computer Science">BS Computer Science</option>
         <option value="BS Nursing">BS Nursing</option>
         <option value="BS Education">BS Education</option>
         <option value="BS Business Administration">BS Business Administration</option>
-        <option value="BS Criminology">BS Criminology</option>
-        <option value="BS Agriculture">BS Agriculture</option>
-        <option value="BS Civil Engineering">BS Civil Engineering</option>
       </select>
 
-      <label>Phone Number</label>
+      <label id="label-phone">Phone Number</label>
       <input type="tel" id="phone" placeholder="09XXXXXXXXX" required>
 
-      <label>Last School Attended</label>
+      <label id="label-school">Last School Attended</label>
       <input type="text" id="school" placeholder="e.g. Bulacan National High School" required>
 
-      <button type="submit">Submit Registration</button>
+      <button type="submit" id="submitBtn">Submit Registration</button>
     </form>
 
     <div class="footer">
@@ -129,6 +113,40 @@
   </div>
 
   <script>
+    // Loading Screen
+    window.onload = () => {
+      setTimeout(() => {
+        document.getElementById('loading').style.display = 'none';
+        document.getElementById('mainContent').style.display = 'block';
+      }, 1600);
+    };
+
+    // Language Switch
+    function setLanguage(lang) {
+      if (lang === 'en') {
+        document.getElementById('title').innerText = "ISCP BULACAN";
+        document.getElementById('subtitle').innerText = "ONLINE REGISTRATION";
+        document.getElementById('label-name').innerText = "Full Name";
+        document.getElementById('label-email').innerText = "Email Address";
+        document.getElementById('label-campus').innerText = "Preferred Campus";
+        document.getElementById('label-course').innerText = "Course / Program";
+        document.getElementById('label-phone').innerText = "Phone Number";
+        document.getElementById('label-school').innerText = "Last School Attended";
+        document.getElementById('submitBtn').innerText = "Submit Registration";
+      } else {
+        document.getElementById('title').innerText = "ISCP BULACAN";
+        document.getElementById('subtitle').innerText = "ONLINE REGISTRATION";
+        document.getElementById('label-name').innerText = "Buong Pangalan";
+        document.getElementById('label-email').innerText = "Email Address";
+        document.getElementById('label-campus').innerText = "Preferred Campus";
+        document.getElementById('label-course').innerText = "Kurso / Programa";
+        document.getElementById('label-phone').innerText = "Numero ng Telepono";
+        document.getElementById('label-school').innerText = "Huling Paaralan na Pinasukan";
+        document.getElementById('submitBtn').innerText = "Isumite ang Registration";
+      }
+    }
+
+    // Form Submit
     document.getElementById('regForm').addEventListener('submit', function(e) {
       e.preventDefault();
       const btn = this.querySelector('button');
@@ -136,7 +154,7 @@
       btn.disabled = true;
 
       setTimeout(() => {
-        alert("✅ Registration Successful!\n\nThank you for applying to ISCP Bulacan Campus!\n\n(This is only a fake/satire website)");
+        alert("✅ Registration Successful!\n\nThank you for applying to ISCP Bulacan Campus!\n\n(Fake site only)");
         this.reset();
         btn.innerHTML = "Submit Registration";
         btn.disabled = false;
