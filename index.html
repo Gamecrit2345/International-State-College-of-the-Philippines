@@ -2,26 +2,181 @@
 <html lang="tl">
 <head>
   <meta charset="UTF-8">
-  <title>ISCP - Bulacan Campus</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ISCP Bulacan Registration</title>
   <style>
-    body { font-family: Arial; text-align: center; background: #001122; color: white; padding: 40px; }
-    .logo { width: 260px; border: 8px solid gold; border-radius: 20px; }
-    h1 { color: cyan; }
-    h2 { color: gold; }
-    .big { color: gold; font-size: 1.5em; }
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #001f3f, #003366);
+      color: white;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .container {
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(12px);
+      border-radius: 20px;
+      border: 2px solid rgba(255,255,255,0.3);
+      padding: 40px 25px;
+      width: 100%;
+      max-width: 580px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+    }
+
+    h1 { 
+      font-size: 2.3em; 
+      text-align: center; 
+      margin-bottom: 8px; 
+    }
+    h2 { 
+      text-align: center; 
+      color: #a0d8ff; 
+      margin-bottom: 30px; 
+      font-weight: 500; 
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      margin-bottom: 5px;
+      font-weight: 500;
+      color: #a0d8ff;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 14px 16px;
+      margin: 8px 0 15px 0;
+      border: none;
+      border-radius: 10px;
+      font-size: 1.05em;
+      background: rgba(255,255,255,0.92);
+      color: #001f3f;
+    }
+
+    button {
+      width: 100%;
+      padding: 16px;
+      margin-top: 25px;
+      background: white;
+      color: #001f3f;
+      border: none;
+      border-radius: 10px;
+      font-size: 1.2em;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    button:hover { background: #00ccff; transform: scale(1.03); }
+
+    .footer {
+      margin-top: 35px;
+      text-align: center;
+      font-size: 0.85em;
+      color: #a0d8ff;
+      line-height: 1.5;
+    }
   </style>
 </head>
 <body>
-  <img src="https://via.placeholder.com/260x260/001f3f/ffd700?text=ISCP" class="logo">
-  <h1>International State College of the Philippines</h1>
-  <h2>Bulacan Campus</h2>
-  <p>Welcome ISCPANIANS!</p>
-  <p>Class starts on September 26, 2022.</p>
-  <p class="big">Now Accepting Admissions!</p>
-  <p class="big">Free Shuttle from Bulacan • 60% Survival 🚌🌾</p>
-  <p><strong>Skrrt Skrrt. Broom Broom.</strong></p>
-  <h2>Entrance Exam Results</h2>
-  <p><a href="ISCP-Entrance-Results.pdf" style="color:gold;">📄 Download PDF</a></p>
-  <p>Made by Richard Christian Uaje v1.0</p>
+
+  <div class="container">
+    <h1>ISCP BULACAN</h1>
+    <h2>ONLINE REGISTRATION 2026</h2>
+
+    <form id="regForm">
+      <label>Full Name</label>
+      <input type="text" id="name" placeholder="Juan Dela Cruz" required>
+
+      <label>Email Address</label>
+      <input type="email" id="email" placeholder="example@gmail.com or @yahoo.com" required>
+
+      <label>Preferred Campus</label>
+      <select id="campus" required>
+        <option value="">-- Select Campus --</option>
+        <option value="Area 51 Extension">Area 51 Extension</option>
+        <option value="Atlantis Extension">Atlantis Extension</option>
+        <option value="Baguio Cold Storage Campus">Baguio Cold Storage Campus</option>
+        <option value="Bataan Campus">Bataan Campus</option>
+        <option value="Bermuda Triangle Campus">Bermuda Triangle Campus</option>
+        <option value="Black Hole Campus">Black Hole Campus</option>
+        <option value="Bulacan Campus">Bulacan Campus</option>
+        <option value="Center of the Earth Campus">Center of the Earth Campus</option>
+        <option value="Chernobyl Extension">Chernobyl Extension</option>
+        <option value="Cloud 9 Campus">Cloud 9 Campus</option>
+        <option value="Deep Ocean Campus">Deep Ocean Campus</option>
+        <option value="DJ Loonyo Int'l Airport Extension">DJ Loonyo Int'l Airport Extension</option>
+        <option value="Encantadia Extension">Encantadia Extension</option>
+        <option value="Fourth Wall Campus">Fourth Wall Campus</option>
+        <option value="Gaslight Campus">Gaslight Campus</option>
+        <option value="Jupiter Campus">Jupiter Campus</option>
+        <option value="Low Earth Orbit Campus">Low Earth Orbit Campus</option>
+        <option value="Main Campus">Main Campus</option>
+        <option value="Marilao–Bulacan Satellite Campus">Marilao–Bulacan Satellite Campus</option>
+        <option value="Mars Outpost Campus">Mars Outpost Campus</option>
+        <option value="Mirror Dimension Campus">Mirror Dimension Campus</option>
+        <option value="Moon Campus">Moon Campus</option>
+        <option value="Pampanga Campus">Pampanga Campus</option>
+        <option value="Parallel Universe Campus">Parallel Universe Campus</option>
+        <option value="Sun Campus">Sun Campus</option>
+        <option value="Time Travel Campus">Time Travel Campus</option>
+        <option value="Underwater Campus">Underwater Campus</option>
+        <option value="Upside Down Campus">Upside Down Campus</option>
+        <option value="Virtual Reality Campus">Virtual Reality Campus</option>
+      </select>
+
+      <label>Course/Program</label>
+      <select id="course" required>
+        <option value="">-- Piliin ang Course --</option>
+        <option value="BS Computer Science">BS Computer Science</option>
+        <option value="BS Nursing">BS Nursing</option>
+        <option value="BS Education">BS Education</option>
+        <option value="BS Business Administration">BS Business Administration</option>
+        <option value="BS Criminology">BS Criminology</option>
+        <option value="BS Agriculture">BS Agriculture</option>
+        <option value="BS Civil Engineering">BS Civil Engineering</option>
+        <option value="BS Memes & Internet Studies">BS Memes & Internet Studies</option>
+      </select>
+
+      <label>Phone Number</label>
+      <input type="tel" id="phone" placeholder="09XXXXXXXXX" required>
+
+      <label>Last School Attended</label>
+      <input type="text" id="school" placeholder="e.g. Bulacan National High School" required>
+
+      <button type="submit">Submit Registration</button>
+    </form>
+
+    <div class="footer">
+      This is only satire. This website is for entertainment purposes only.<br>
+      Created by Denton Sagmayao<br>
+      ISCPHILIPPINES.com
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('regForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const button = this.querySelector('button');
+      button.innerHTML = "Processing Application...";
+      button.disabled = true;
+
+      setTimeout(() => {
+        alert("✅ Registration Successful!\n\nThank you for applying to ISCP!\n\n(This is only a fake/satire site)");
+        
+        document.getElementById('regForm').reset();
+        button.innerHTML = "Submit Registration";
+        button.disabled = false;
+      }, 2200);
+    });
+  </script>
+
 </body>
 </html>
