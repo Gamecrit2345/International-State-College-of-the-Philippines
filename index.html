@@ -41,8 +41,21 @@
     h2 { 
       text-align: center; 
       color: #a0d8ff; 
-      margin-bottom: 30px; 
+      margin-bottom: 25px; 
       font-weight: 500; 
+    }
+    
+    .lang-buttons {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+    
+    .lang-btn {
+      padding: 10px 20px;
+      margin: 0 6px;
+      width: auto !important;
+      font-size: 0.95em !important;
+      border-radius: 8px;
     }
     
     label { 
@@ -75,6 +88,7 @@
       font-size: 1.2em; 
       font-weight: 600;
       cursor: pointer;
+      transition: 0.2s;
     }
     
     button:hover { 
@@ -89,7 +103,6 @@
       line-height: 1.6; 
     }
 
-    /* FIX: Missing spinner animation */
     @keyframes spin {
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
@@ -109,9 +122,9 @@
     <h1 id="title">INTERNATIONAL STATE COLLEGE OF THE PHILIPPINES</h1>
     <h2 id="subtitle">ONLINE REGISTRATION</h2>
     
-    <div style="margin:25px 0; text-align:center;">
-      <button onclick="setLanguage('en')" style="padding:10px 20px;margin:0 8px;width:auto;">🇬🇧 English</button>
-      <button onclick="setLanguage('tl')" style="padding:10px 20px;margin:0 8px;width:auto;">🇵🇭 Tagalog</button>
+    <div class="lang-buttons">
+      <button class="lang-btn" onclick="setLanguage('en')">🇬🇧 English</button>
+      <button class="lang-btn" onclick="setLanguage('tl')">🇵🇭 Tagalog</button>
     </div>
     
     <form id="regForm">
@@ -125,7 +138,7 @@
       <input type="text" id="lname" placeholder="Dela Cruz" required>
       
       <label id="label-email">Email Address</label>
-      <input type="email" id="email" placeholder="example@gmail.com or @yahoo.com" required>
+      <input type="email" id="email" placeholder="example@gmail.com" required>
       
       <label id="label-campus">Preferred Campus</label>
       <select id="campus" required>
@@ -209,6 +222,8 @@
   </div>
 
   <script>
+    let currentLang = 'en';
+
     window.onload = () => {
       setTimeout(() => {
         document.getElementById('loading').style.display = 'none';
@@ -217,6 +232,8 @@
     };
 
     function setLanguage(lang) {
+      currentLang = lang;
+
       if (lang === 'en') {
         document.getElementById('title').innerText = "INTERNATIONAL STATE COLLEGE OF THE PHILIPPINES";
         document.getElementById('subtitle').innerText = "ONLINE REGISTRATION";
@@ -230,30 +247,37 @@
         document.getElementById('label-school').innerText = "Last School Attended";
         document.getElementById('submitBtn').innerText = "Submit Registration";
       } else {
+        // Proper Tagalog
         document.getElementById('title').innerText = "INTERNATIONAL STATE COLLEGE OF THE PHILIPPINES";
         document.getElementById('subtitle').innerText = "ONLINE REGISTRATION";
-        document.getElementById('label-fname').innerText = "First Name";
-        document.getElementById('label-mname').innerText = "Middle Name (Kung mayroon)";
+        document.getElementById('label-fname').innerText = "Pangalan";
+        document.getElementById('label-mname').innerText = "Gitnang Pangalan (Opsyonal)";
         document.getElementById('label-lname').innerText = "Apelyido";
         document.getElementById('label-email').innerText = "Email Address";
-        document.getElementById('label-campus').innerText = "Preferred Campus";
+        document.getElementById('label-campus').innerText = "Piniling Campus";
         document.getElementById('label-course').innerText = "Kurso / Programa";
         document.getElementById('label-phone').innerText = "Numero ng Telepono";
         document.getElementById('label-school').innerText = "Huling Paaralan na Pinasukan";
-        document.getElementById('submitBtn').innerText = "Isumite ang Registration";
+        document.getElementById('submitBtn').innerText = "Isumite ang Rehistrasyon";
       }
     }
 
     document.getElementById('regForm').addEventListener('submit', function(e) {
       e.preventDefault();
-      const btn = this.querySelector('button');
-      btn.innerHTML = "Processing...";
+      const btn = this.querySelector('#submitBtn');
+      const originalText = btn.innerText;
+      
+      btn.innerHTML = currentLang === 'en' ? "Processing..." : "Pinoproseso...";
       btn.disabled = true;
       
       setTimeout(() => {
-        alert("✅ Registration Successful!\n\nThank you for applying to INTERNATIONAL STATE COLLEGE OF THE PHILIPPINES!\n\n(Fake site only)");
+        const message = currentLang === 'en' 
+          ? "✅ Registration Successful!\n\nThank you for applying to INTERNATIONAL STATE COLLEGE OF THE PHILIPPINES!\n\n(Fake site only)"
+          : "✅ Matagumpay ang Rehistrasyon!\n\nSalamat sa pag-aaply sa INTERNATIONAL STATE COLLEGE OF THE PHILIPPINES!\n\n(Fake site only)";
+        
+        alert(message);
         this.reset();
-        btn.innerHTML = "Submit Registration";
+        btn.innerHTML = originalText;
         btn.disabled = false;
       }, 2000);
     });
